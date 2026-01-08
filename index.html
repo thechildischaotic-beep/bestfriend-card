@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Sorry & Thank You 💙</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(135deg, #a1c4fd, #fbc2eb);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Comic Sans MS', cursive;
+  overflow: hidden;
+}
+
+.card {
+  background: white;
+  padding: 30px;
+  border-radius: 25px;
+  text-align: center;
+  width: 320px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+  animation: pop 1.2s ease;
+  z-index: 2;
+}
+
+@keyframes pop {
+  from { transform: scale(0); }
+  to { transform: scale(1); }
+}
+
+h1 {
+  color: #ff4d6d;
+}
+
+#text {
+  font-size: 15px;
+  color: #444;
+  min-height: 160px;
+}
+
+/* Hearts */
+.heart {
+  position: absolute;
+  color: pink;
+  font-size: 18px;
+  animation: float 6s linear infinite;
+}
+
+@keyframes float {
+  0% { transform: translateY(100vh); opacity: 1; }
+  100% { transform: translateY(-10vh); opacity: 0; }
+}
+
+img {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+  object-fit: cover;
+}
+</style>
+</head>
+
+<body>
+
+<!-- Background Music -->
+<audio autoplay loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<div class="card">
+  <!-- Photo -->
+  <img src="photo.jpg" alt="Best Friend">
+
+  <h1>I’m Sorry 💙</h1>
+  <p id="text"></p>
+</div>
+
+<script>
+const message = `
+I’m really sorry if I ever hurt you 😔
+
+Thank you for coming into my life 💫
+You are the most precious thing I have.
+
+No matter what happens,
+I will keep you with me forever ♾️
+
+Aashuu 🤍
+Lots of love 💖
+`;
+
+let i = 0;
+function typeEffect() {
+  if (i < message.length) {
+    document.getElementById("text").innerHTML += message.charAt(i);
+    i++;
+    setTimeout(typeEffect, 40);
+  }
+}
+typeEffect();
+
+// Hearts generator
+setInterval(() => {
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerHTML = "💗";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.fontSize = Math.random() * 20 + 10 + "px";
+  document.body.appendChild(heart);
+
+  setTimeout(() => heart.remove(), 6000);
+}, 400);
+</script>
+
+</body>
+</html>
